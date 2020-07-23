@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * PDF text extractor
+ * Extracts and save text in a text document with the same filename
  */
 package net.teachingassistant.pdfreader;
 
@@ -41,18 +40,21 @@ public class PDFReader {
     public static void main(String args[]) {
 
         // Minimal example
-        String PATH = "/Research/MCQGen/";
-        String inDoc = "Engineering Economy, 7th Ed.pdf";
+        
+        String PATH = "";
+        // Name of the pdf file
+        String inDoc = "";
         //String outDoc = "Corpora/chapters/txt/"+inDoc.substring(inDoc.lastIndexOf("/")+1, inDoc.length()-4) + ".txt";
-        String outDoc = "Corpora/chapters/txt/"+inDoc+".txt";        
+        // Output file
+        String outDoc = "output/"+inDoc+".txt";        
         
         FileUtils FU = new FileUtils();
         try {
             PDFReader pdf = new PDFReader();
-            String text = pdf.getText(new File(PATH+"files/"+inDoc), 1, 34);
+            String text = pdf.getText(new File(PATH+inDoc), 1, 34);
             FU.writeFile(new File(PATH+outDoc), text);            
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Unable to read PDF file " + inDoc);
         }
     }
 }

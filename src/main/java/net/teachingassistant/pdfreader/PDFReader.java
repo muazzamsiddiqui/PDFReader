@@ -51,6 +51,7 @@ public class PDFReader {
         FileUtils FU = new FileUtils();
         try {
             PDFReader pdf = new PDFReader();
+            // The last two arguments are page numbers. Assign 0, 0 for full document
             String text = pdf.getText(new File(PATH+inDoc), 1, 34);
             FU.writeFile(new File(PATH+outDoc), text);            
         } catch (IOException e) {
